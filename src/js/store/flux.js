@@ -12,7 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			urlBase: "https://playground.4geeks.com/apis/fake/contact",
+			contacts: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +39,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			//Define a function to get my contacts from the API
+			getContacts: async () => {
+				let store = getStore()
+				try {
+					let response = await fetch(`${store.urlBase}/agenda/juanvicente0104`)
+					let data = await response.json()
+
+					//console.log("this is the data")
+					//console.log(data)
+
+					setStore({contacts:data})
+					
+				} catch (error) {
+					console.log(error)
+				}
 			}
 		}
 	};
