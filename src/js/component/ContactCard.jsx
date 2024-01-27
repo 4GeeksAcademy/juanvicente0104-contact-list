@@ -1,9 +1,11 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom";
+import { Context } from "./../store/appContext.js"
 
 const ContactCard = (props) => {
 
-	console.log(props)
+	//console.log(props)
+	const { store, actions } = useContext(Context)
 
 	return (
 
@@ -25,7 +27,7 @@ const ContactCard = (props) => {
 
 				<Link to={`/editcontact/${props.person.id}`}> <i className="fas fa-pencil-alt"></i> </Link>
 
-				<p> <i className="fas fa-trash-alt"></i> </p>
+				<Link to="/" onClick={() => actions.deleteContact(props.person.id)} > <i className="fas fa-trash-alt"></i> </Link>
 
 			</div>
 

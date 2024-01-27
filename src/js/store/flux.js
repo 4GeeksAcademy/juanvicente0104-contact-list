@@ -94,16 +94,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					//console.log(data)
 					if (response.ok) {
-						alert("Contacto modificado con exito")
+						alert("Success deleting this contact")
+						getActions().getContacts()
 					}
 					else {
-						alert("Error al modificar contacto")
+						alert("Error deleting this contact")
 					}
 
 				} catch (error) {
-
 					console.log(error)
+				}
+			},
+			//Define a function to delete a contact from my agenda
+			deleteContact: async (id) => {
+				let store = getStore()
+				try {
+					let response = await fetch(`${store.urlBase}` + `${id}`, {
+						method: "DELETE",
+						//headers: { "Content-Type": "application/json" },
+						//body: JSON.stringify(data)
+					})
+					//console.log(data)
+					if (response.ok) {
+						alert("Success editing contact")
+					}
+					else {
+						alert("Error editing contact")
+					}
 
+
+				} catch (error) {
+					console.log(error)
 				}
 			}
 		}
