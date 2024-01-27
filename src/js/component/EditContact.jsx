@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react"
 import { Context } from "../store/appContext"
+import { useParams } from "react-router-dom"
 
-const Contact = () => {
+const EditContact = () => {
+
+    const { id } = useParams()
 
     const { actions } = useContext(Context)
 
@@ -21,19 +24,19 @@ const Contact = () => {
         })
     }
 
-    const handleAddingContact = async (event) => {
+    const handleEditingContact = async (event) => {
 
         event.preventDefault()
 
         // Verifica que todos los campos requeridos estén completos
-        if (user.full_name === "" || user.email === "" || user.phone === "" || user.address === "") {
-            alert("You must fill all the information")
-            return
-        }
-        else {
-            let result = await actions.addContact(user)
-            console.log(result)
-        }
+        //if (user.full_name === "" || user.email === "" || user.phone === "" || user.address === "") {
+        //    alert("You must fill all the information")
+        //    return
+        //}
+        //else {
+        let result = await actions.editContact(user,id)
+        console.log(result)
+        //}
     }
 
     return (
@@ -41,7 +44,7 @@ const Contact = () => {
         <>
             <div className="container">
                 <div className="row m-3 p-2">
-                    <form className="border border-secondary" onSubmit={handleAddingContact}>
+                    <form className="border border-secondary" onSubmit={handleEditingContact}>
                         <h1 className="d-flex justify-content-center bg bg-secondary rounded text-white m-2 p-2"> Add Contact </h1>
                         {/* Enter Full Name */}
                         <div className="mb-3">
@@ -97,4 +100,4 @@ const Contact = () => {
     )
 }
 
-export default Contact
+export default EditContact

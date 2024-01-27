@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { Link } from "react-router-dom";
 
 const ContactCard = (props) => {
 
@@ -22,7 +23,7 @@ const ContactCard = (props) => {
 
 			<div className="col-1 justify-content-between d-flex align-items-start p-4">
 
-				<p> <i className="fas fa-pencil-alt"></i> </p>
+				<Link to={`/editcontact/${props.person.id}`}> <i className="fas fa-pencil-alt"></i> </Link>
 
 				<p> <i className="fas fa-trash-alt"></i> </p>
 
