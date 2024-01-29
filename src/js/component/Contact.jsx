@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react"
 import { Context } from "../store/appContext"
+import { Link, useNavigate } from "react-router-dom"
 
 const Contact = () => {
 
     const { actions } = useContext(Context)
+    const navigate = useNavigate()
 
     {/* Define a state to save the info entered into the form */ }
 
@@ -32,7 +34,8 @@ const Contact = () => {
         }
         else {
             let result = await actions.addContact(user)
-            console.log(result)
+            navigate("/")
+            //console.log(result)
         }
     }
 
@@ -42,7 +45,7 @@ const Contact = () => {
             <div className="container">
                 <div className="row m-3 p-2">
                     <form className="border border-secondary" onSubmit={handleAddingContact}>
-                        <h1 className="d-flex justify-content-center bg bg-secondary rounded text-white m-2 p-2"> Add Contact </h1>
+                        <h1 className="d-flex justify-content-center bg bg-primary rounded text-white m-2 p-2"> Add Contact </h1>
                         {/* Enter Full Name */}
                         <div className="mb-3">
                             <label className="form-label"> Full Name </label>
@@ -91,7 +94,11 @@ const Contact = () => {
                         <button type="submit" className="m-2 btn btn-primary"> Save </button>
                     </form>
                 </div>
+
+                <Link to="/"> Back to my contacts</Link>
+
             </div>
+
         </>
 
     )

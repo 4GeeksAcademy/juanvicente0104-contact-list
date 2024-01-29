@@ -69,10 +69,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					//console.log(data)
 					if (response.ok) {
-						alert("Contacto Creado con exito")
+						alert("Sucess creating contact")
 					}
 					else {
-						alert("Error al crear contacto")
+						alert("Error creating contact")
 					}
 
 				} catch (error) {
